@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NoRush SMP - Newsletter Signup</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #fff;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(90deg, #4CAF50, #2E8B57);
+            padding: 20px;
+        }
+        section {
+            margin: 40px 20px;
+            padding: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        input[type="email"] {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #5865F2;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4752C4;
+        }
+        footer {
+            background-color: #181818;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NoRush SMP</h1>
+        <p>Sign up for our newsletter to stay updated!</p>
+    </header>
+    <section>
+        <h2>Newsletter Signup</h2>
+        <p>Enter your email to receive the latest news and updates about NoRush SMP.</p>
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button id="subscribe">Subscribe</button>
+        <p id="message"></p>
+    </section>
+    <footer>
+        <p>&copy; 2025 NoRush SMP. All rights reserved.</p>
+    </footer>
+    <script>
+        document.getElementById('subscribe').addEventListener('click', function() {
+            const email = document.getElementById('email').value;
+            if (!email) {
+                document.getElementById('message').innerText = "Please enter a valid email address.";
+                return;
+            }
+            
+            const webhookURL = "https://discord.com/api/webhooks/1345764718408765460/cIcdNhGyzBUspon5nCWtBRzKcC1_cTekNO9Idfb7bT5Ams3FMv-3FYK9mA1rYNK-i_94";
+            
+            fetch(webhookURL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ content: `New newsletter signup: ${email}` })
+            })
+            .then(response => {
+                if (response.ok) {
+                    document.getElementById('message').innerText = "Thank you for subscribing!";
+                    document.getElementById('email').value = "";
+                } else {
+                    document.getElementById('message').innerText = "Failed to subscribe. Please try again later.";
+                }
+            })
+            .catch(error => {
+                document.getElementById('message').innerText = "An error occurred. Please try again later.";
+            });
+        });
+    </script>
+</body>
+</html>
