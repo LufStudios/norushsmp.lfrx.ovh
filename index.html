@@ -49,6 +49,22 @@
             background-color: #181818;
             padding: 10px;
         }
+        .discord-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #5865F2;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        .discord-button:hover {
+            background-color: #4752C4;
+        }
     </style>
 </head>
 <body>
@@ -78,7 +94,8 @@
     </section>
     <section id="join">
         <h2>Join Now</h2>
-        <p>IP Address: <strong>play.norushsmp.com</strong></p>
+        <p>IP Address: <strong>play.norushsmp.lfrx.ovh</strong></p>
+        <p>Bedrock port: <strong>50489</strong></p>
     </section>
     <footer>
         <p>&copy; 2025 NoRush SMP. All rights reserved.</p>
@@ -90,6 +107,10 @@
                 const targetId = this.getAttribute('href').substring(1);
                 document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
             });
+        });
+        
+        document.getElementById('discordButton').addEventListener('click', function() {
+            window.location.href = 'https://norushsmp.lfrx.ovh/discord';
         });
     </script>
 </body>
